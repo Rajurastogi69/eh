@@ -1,0 +1,16 @@
+import hashlib
+
+def crackHash(inputpass):
+       try:
+           passFile = open("passwordlist.txt", "r")
+       except:
+           print("could not find file")
+
+       for password in passFile:
+           encPass =password.encode("utf-8")
+           digest = hashlib.md5(encPass.strip()).hexdigest()
+           if digest == inputpass:
+               print("Password Found:" +password)
+
+if __name__=='__main__':
+    crackHash("73803249c6667c5af2d51c0dedfae487")

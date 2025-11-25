@@ -1,0 +1,19 @@
+import tkinter as tk
+
+def on_key_press(event):
+    with open("abc.txt", "a") as f:
+        f.write(event.char + "\n")  # save pressed key
+    print(f"Key pressed: {event.char}")  # visible feedback
+
+# create window
+root = tk.Tk()
+root.title("Safe Keylogger Demo (Educational)")
+root.geometry("300x200")
+
+label = tk.Label(root, text="Type here. Keys will be logged safely.", wraplength=250)
+label.pack(pady=50)
+
+# bind key events
+root.bind("<Key>", on_key_press)
+
+root.mainloop()
